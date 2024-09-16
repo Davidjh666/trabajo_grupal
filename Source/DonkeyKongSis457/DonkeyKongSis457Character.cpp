@@ -36,9 +36,9 @@ ADonkeyKongSis457Character::ADonkeyKongSis457Character()
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 720.0f, 0.0f); // ...at this rotation rate
 	GetCharacterMovement()->GravityScale = 2.f;
 	GetCharacterMovement()->AirControl = 0.80f;
-	GetCharacterMovement()->JumpZVelocity = 1000.f;
+	GetCharacterMovement()->JumpZVelocity = 1250.f;
 	GetCharacterMovement()->GroundFriction = 3.f;
-	GetCharacterMovement()->MaxWalkSpeed = 600.f;
+	GetCharacterMovement()->MaxWalkSpeed = 900.f;
 	GetCharacterMovement()->MaxFlySpeed = 600.f;
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
