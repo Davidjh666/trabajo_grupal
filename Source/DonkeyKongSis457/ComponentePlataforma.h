@@ -7,24 +7,21 @@
 UCLASS()
 class DONKEYKONGSIS457_API AComponentePlataforma : public AActor
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 
 public:
-	// Sets default values for this actor's properties
-	AComponentePlataforma();
+    AComponentePlataforma();
 
 protected:
-	UStaticMeshComponent* MeshComponentePlataforma;
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+    UStaticMeshComponent* MeshComponentePlataforma;
+    virtual void BeginPlay() override;
 
 public:
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-	void MoverActor(float DeltaTime); // Declaración de la función
+    virtual void Tick(float DeltaTime) override;
+    void MoverActor(float DeltaTime);
 
-public:
-	float MovimientoY = 0.0f;
-	float Velocidad = 100.0f;
-	bool Direccion = true;
+    float MovimientoY = 0.0f;
+    float Velocidad = 100.0f;
+    bool Direccion = true;
+    bool bShouldMove = false;
 };

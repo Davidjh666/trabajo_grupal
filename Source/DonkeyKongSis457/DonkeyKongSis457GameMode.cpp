@@ -5,6 +5,10 @@
 #include "UObject/ConstructorHelpers.h"
 #include "ComponentePlataforma.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "plataforma.h"
+#include <cstdlib> // Necesario para la función rand()
+#include <ctime>   // Necesario para la función time()
+#include <set>     // Necesario para std::set
 
 ADonkeyKongSis457GameMode::ADonkeyKongSis457GameMode()
 {
@@ -20,51 +24,133 @@ ADonkeyKongSis457GameMode::ADonkeyKongSis457GameMode()
 
 void ADonkeyKongSis457GameMode::BeginPlay()
 {
-	Super::BeginPlay();
-	FTransform SpawnLocation;
-	int aumentoenz = 5;
-	int incremento = 150;
-	int num1 = 1;
-	int disminucion = 0;
+    Super::BeginPlay();
 
-	int num2 = 250;
+    FTransform SpawnLocation;
+	FTransform SpawnLocation2;  
+    int aumentoenz = 5;
+    int incremento = 150;
+    int num1 = 0;
+    int disminucion = 0;
+    int num2 = 90;
+	int num3 = 300;
+	int num4 = -3450;   
+	int num5 = 0;
+	int num6 = 0;
+	int num7 = 0;
 
-	for (int i = 0; i < 5; i++)
-	{
-		for (int num = 1; num < 5; num++)
-		if (i % 2 == 0) {
-			SpawnLocation.SetLocation(FVector(1160.0f, -210.0f, 310.0f + i * 100.0f * aumentoenz + incremento-disminucion+num2));
-			SpawnLocation.SetRotation(FQuat(FRotator(0.0f, 0.0f, -10.0f)));
-			SpawnLocation.SetScale3D(FVector(4.0f, 30.0f, 1.0f));
-	
-		}
-		else {
-			SpawnLocation.SetLocation(FVector(1160.0f, -210.0f, 460.0f + i * 100.0f * aumentoenz + incremento-disminucion));
-			SpawnLocation.SetRotation(FQuat(FRotator(0.0f, 0.0f, 0.0f)));
-			SpawnLocation.SetScale3D(FVector(4.0f, 30.0f, 1.0f));
-			incremento = incremento + 250;
-			disminucion = disminucion + 150;
-		}
-	
-		AComponentePlataforma* NewPlatform = GetWorld()->SpawnActor<AComponentePlataforma>(AComponentePlataforma::StaticClass(), SpawnLocation);
-		if (NewPlatform)
-		{
-			componenteplataforma.Add(i + 1, NewPlatform); // Agrega la nueva plataforma al TMap
-		}
-	}
-	
-}
+    for (int a = 0; a < 5; a++) {
+        if (a % 2 == 0) {
+            SpawnLocation2.SetLocation(FVector(1160.0f, 1500.0f, 930.0f+num5));
+            SpawnLocation2.SetRotation(FQuat(FRotator(0.0f, 0.0f, 0.0f)));
+            SpawnLocation2.SetScale3D(FVector(4.0f, 5.0f, 1.0f));
+			
+
+            // Generar el actor Plataforma
+            GetWorld()->SpawnActor<Aplataforma>(Aplataforma::StaticClass(), SpawnLocation2);
+
+        }
+        else {
+
+            SpawnLocation2.SetLocation(FVector(1160.0f, 1500.0f + num4, 930.0f + num3+num6));
+            SpawnLocation2.SetRotation(FQuat(FRotator(0.0f, 0.0f, 0.0f)));
+            SpawnLocation2.SetScale3D(FVector(4.0f, 5.0f, 1.0f));
+            num6 = num6 + 1120;
+            // Generar el actor Plataforma
+            GetWorld()->SpawnActor<Aplataforma>(Aplataforma::StaticClass(), SpawnLocation2);
+        }
+        num5 = num5 + 560;
+		
+    }
+
+    for (int i = 0; i < 5; i++)
+    {
+        
+            if (i % 2 == 0)
+            {
+                SpawnLocation.SetLocation(FVector(1160.0f, -210.0f, 430.0f + i * 100.0f * aumentoenz + incremento - disminucion + num2+num1));
+                SpawnLocation.SetRotation(FQuat(FRotator(0.0f, 0.0f, -10.0f)));
+                SpawnLocation.SetScale3D(FVector(4.0f, 30.0f, 1.0f));
+            }
+            else
+            {
+                SpawnLocation.SetLocation(FVector(1160.0f, -210.0f, 580.0f + i * 100.0f * aumentoenz + incremento - disminucion+num7));
+                SpawnLocation.SetRotation(FQuat(FRotator(0.0f, 0.0f, 0.0f)));
+                SpawnLocation.SetScale3D(FVector(4.0f, 30.0f, 1.0f));
+                incremento = incremento + 250;
+                disminucion = disminucion + 150;
+                num7 = num7 + 20;
+            }
+			num1 = num1 + 10;
+			
+
+            AComponentePlataforma* NewPlatform = GetWorld()->SpawnActor<AComponentePlataforma>(AComponentePlataforma::StaticClass(), SpawnLocation);
+            if (NewPlatform)
+            {
+                componenteplataforma.Add(i + 1, NewPlatform);
+            }
+            srand(time(nullptr));
+
+            std::set<int> numerosGenerados; // Conjunto para almacenar números generados
+            int j = 0;
+
+            while (j < 3) { // Cambiamos la condición para que solo se ejecute 3 veces
+                int RandomNumber = rand() % 5 + 1;
+
+                // Verificamos si el número ya ha sido generado
+                if (numerosGenerados.find(RandomNumber) == numerosGenerados.end()) {
+                    numerosGenerados.insert(RandomNumber); // Añadimos el número al conjunto
+
+                    if (RandomNumber == 1 && i + 1 == 1) {
+                        NewPlatform->bShouldMove = true;
+                        GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Se mueve la plataforma 1"));
+                    }
+                    else if (RandomNumber == 2 && i + 1 == 2) {
+                        NewPlatform->bShouldMove = true;
+                        GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Se mueve la plataforma 2"));
+                    }
+                    else if (RandomNumber == 3 && i + 1 == 3) {
+                        NewPlatform->bShouldMove = true;
+                        GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Se mueve la plataforma 3"));
+                    }
+                    else if (RandomNumber == 4 && i + 1 == 4) {
+                        NewPlatform->bShouldMove = true;
+                        GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Se mueve la plataforma 4"));
+                    }
+                    else if (RandomNumber == 5 && i + 1 == 5) {
+                        NewPlatform->bShouldMove = true;
+                        GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("Se mueve la plataforma 5"));
+                    }
+
+                    j++; // Incrementamos el contador solo si el número es nuevo
+                }
+            }
+
+        }
+
+    for (int a = 0; a < 5; a++) {
+
+        SpawnLocation2.SetLocation(FVector(1420.0f,1350.0f, 280.0f*a ));
+        SpawnLocation2.SetRotation(FQuat(FRotator(0.0f, 0.0f, 0.0f)));
+        SpawnLocation2.SetScale3D(FVector(4.0f, 30.0f, 1.0f));
+
+
+    }
+
+
+
+ }
 void ADonkeyKongSis457GameMode::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	// Verifica si el tercer elemento existe en el TMap
-	if (AComponentePlataforma** FoundPlatform = componenteplataforma.Find(3)) // Accede al tercer elemento (clave 3)
-	{
-		if (*FoundPlatform)
-		{
-			// Llama al método MoverActor del tercer elemento
-			(*FoundPlatform)->MoverActor(DeltaTime); // Usa tu método MoverActor aquí
-		}
-	}
+	//// Verifica si el tercer elemento existe en el TMap
+	//if (AComponentePlataforma** FoundPlatform = componenteplataforma.Find(3)) // Accede al tercer elemento (clave 3)
+	//{
+	//	//if (*FoundPlatform)
+	//	//{
+	//	//	// Llama al método MoverActor del tercer elemento
+	//	//	(*FoundPlatform)->MoverActor(DeltaTime); // Usa tu método MoverActor aquí
+	//	//}
+	//}
 }

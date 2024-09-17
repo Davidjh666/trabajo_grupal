@@ -23,17 +23,20 @@ void AComponentePlataforma::BeginPlay()
 void AComponentePlataforma::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	
+	MoverActor(DeltaTime);
 }
+
 
 void AComponentePlataforma::MoverActor(float DeltaTime)
 {
+	if (!bShouldMove)
+		return;
 	FVector NuevaPosicion = GetActorLocation();
 
 	if (Direccion)
 	{
 		MovimientoY += Velocidad * DeltaTime;
-		if (MovimientoY >= 500.0f) // Limite superior
+		if (MovimientoY >= 500.0f)
 		{
 			Direccion = false;
 		}
@@ -41,7 +44,7 @@ void AComponentePlataforma::MoverActor(float DeltaTime)
 	else
 	{
 		MovimientoY -= Velocidad * DeltaTime;
-		if (MovimientoY <= -500.0f) // Limite inferior
+		if (MovimientoY <= -500.0f)
 		{
 			Direccion = true;
 		}
