@@ -9,6 +9,7 @@
 
 class AComponentePlataforma;
 
+
 UCLASS(minimalapi)
 class ADonkeyKongSis457GameMode : public AGameModeBase
 {
