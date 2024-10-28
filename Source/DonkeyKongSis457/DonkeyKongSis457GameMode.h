@@ -20,11 +20,7 @@ public:
 protected:
 	virtual void BeginPlay() override;
 public:
-	AComponentePlataforma* cp01;
-	AComponentePlataforma* cp02;
-	AComponentePlataforma* cp03;
-	AComponentePlataforma* cp04;
-	AComponentePlataforma* cp05;
+
 
 	TMap<int32, AComponentePlataforma*> componenteplataforma;
 	virtual void Tick(float DeltaTime) override;

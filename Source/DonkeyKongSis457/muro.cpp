@@ -6,11 +6,11 @@
 // Sets default values
 Amuro::Amuro()
 {
-	ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset = ConstructorHelpers::FObjectFinder<UStaticMesh>(TEXT("StaticMesh'/Game/Geometry/Meshes/TemplateFloor.TemplateFloor'"));
+	/*ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset = ConstructorHelpers::FObjectFinder<UStaticMesh>(TEXT("StaticMesh'/Game/Geometry/Meshes/TemplateFloor.TemplateFloor'"));
 	Meshmuro = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 
 	Meshmuro->SetStaticMesh(MeshAsset.Object);
-	RootComponent = Meshmuro;
+	RootComponent = Meshmuro;*/
 }
 
 void Amuro::movermuro()

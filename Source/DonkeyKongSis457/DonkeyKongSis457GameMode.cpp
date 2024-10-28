@@ -4,7 +4,7 @@
 #include "DonkeyKongSis457Character.h"
 #include "UObject/ConstructorHelpers.h"
 #include "ComponentePlataforma.h"
-#include "Kismet/KismetMathLibrary.h"
+
 #include "plataforma.h"
 #include "enemigo.h"
 #include "muro.h"
@@ -144,45 +144,45 @@ void ADonkeyKongSis457GameMode::BeginPlay()
 
 
 
-    //Spaw de muro helado
-    SpawnLocation4.SetLocation(FVector(1160.0f, 1500.0f, 1500.0f));
-     SpawnLocation4.SetRotation(FQuat(FRotator(90.0f, 90.0f, 0.0f)));
-     SpawnLocation4.SetScale3D(FVector(0.05f, 0.05f, 0.05f));
-     
-     // Generar el actor Plataforma
-     GetWorld()->SpawnActor<Amurohelado>(Amurohelado::StaticClass(), SpawnLocation4);
+    ////Spaw de muro helado
+    //SpawnLocation4.SetLocation(FVector(1160.0f, 1500.0f, 1500.0f));
+    // SpawnLocation4.SetRotation(FQuat(FRotator(90.0f, 90.0f, 0.0f)));
+    // SpawnLocation4.SetScale3D(FVector(0.05f, 0.05f, 0.05f));
+    // 
+    // // Generar el actor Plataforma
+    // GetWorld()->SpawnActor<Amurohelado>(Amurohelado::StaticClass(), SpawnLocation4);
 
-     //Spaw de muro de fuego
-     SpawnLocation5.SetLocation(FVector(1160.0f, -1400.0f, 1800.0f));
-     SpawnLocation5.SetRotation(FQuat(FRotator(90.0f, 90.0f, 0.0f)));
-     SpawnLocation5.SetScale3D(FVector(2.05f, 2.05f, 2.05f));
+    // //Spaw de muro de fuego
+    // SpawnLocation5.SetLocation(FVector(1160.0f, -1400.0f, 1800.0f));
+    // SpawnLocation5.SetRotation(FQuat(FRotator(90.0f, 90.0f, 0.0f)));
+    // SpawnLocation5.SetScale3D(FVector(2.05f, 2.05f, 2.05f));
 
-     // Generar el actor Plataforma
-     GetWorld()->SpawnActor<Amuroladrillo>(Amuroladrillo::StaticClass(), SpawnLocation5);
+    // // Generar el actor Plataforma
+    // GetWorld()->SpawnActor<Amuroladrillo>(Amuroladrillo::StaticClass(), SpawnLocation5);
 
 
-     //Spaw de muro electrico
-     SpawnLocation5.SetLocation(FVector(1160.0f, 1000.0f, 2700.0f));
-     SpawnLocation5.SetRotation(FQuat(FRotator(90.0f, 90.0f, 0.0f)));
-     SpawnLocation5.SetScale3D(FVector(2.05f, 2.05f, 2.05f));
+    // //Spaw de muro electrico
+    // SpawnLocation5.SetLocation(FVector(1160.0f, 1000.0f, 2700.0f));
+    // SpawnLocation5.SetRotation(FQuat(FRotator(90.0f, 90.0f, 0.0f)));
+    // SpawnLocation5.SetScale3D(FVector(2.05f, 2.05f, 2.05f));
 
-     // Generar el actor Plataforma
-     GetWorld()->SpawnActor<Amuro_de_fuego>(Amuro_de_fuego::StaticClass(), SpawnLocation5);
+    // // Generar el actor Plataforma
+    // GetWorld()->SpawnActor<Amuro_de_fuego>(Amuro_de_fuego::StaticClass(), SpawnLocation5);
 
-     //Spawn de muro ladrillo
-     SpawnLocation6.SetLocation(FVector(1160.0f, 1500.0f, 2100.0f));
-     SpawnLocation6.SetRotation(FQuat(FRotator(0.0f,180.0f, 0.0f)));
-     SpawnLocation6.SetScale3D(FVector(0.05f, 0.05f, 0.05f));
+    // //Spawn de muro ladrillo
+    // SpawnLocation6.SetLocation(FVector(1160.0f, 1500.0f, 2100.0f));
+    // SpawnLocation6.SetRotation(FQuat(FRotator(0.0f,180.0f, 0.0f)));
+    // SpawnLocation6.SetScale3D(FVector(0.05f, 0.05f, 0.05f));
 
-     // Generar el actor Plataforma
-     GetWorld()->SpawnActor<Amuro>(Amuro::StaticClass(), SpawnLocation6);
+    // // Generar el actor Plataforma
+    // GetWorld()->SpawnActor<Amuro>(Amuro::StaticClass(), SpawnLocation6);
 
-     SpawnLocation7.SetLocation(FVector(1160.0f, 500.0f, 200.0f));
-     SpawnLocation7.SetRotation(FQuat(FRotator(0.0f, 90.0f, 0.0f)));
-     SpawnLocation7.SetScale3D(FVector(0.05f, 0.05f, 0.05f));
+    // SpawnLocation7.SetLocation(FVector(1160.0f, 500.0f, 200.0f));
+    // SpawnLocation7.SetRotation(FQuat(FRotator(0.0f, 90.0f, 0.0f)));
+    // SpawnLocation7.SetScale3D(FVector(0.05f, 0.05f, 0.05f));
 
-     // Generar el actor Plataforma
-     GetWorld()->SpawnActor<Amuroelectrico>(Amuroelectrico::StaticClass(), SpawnLocation7);
+    // // Generar el actor Plataforma
+    // GetWorld()->SpawnActor<Amuroelectrico>(Amuroelectrico::StaticClass(), SpawnLocation7);
 }
 void ADonkeyKongSis457GameMode::Tick(float DeltaTime)
 {
