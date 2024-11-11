@@ -4,6 +4,7 @@
 
 #include "SpawnerObservador.h"
 #include "enemigo.h"
+#include "publicador.h"
 
 ASpawnerObservador::ASpawnerObservador()
 {
@@ -29,26 +30,30 @@ void ASpawnerObservador::Tick(float DeltaTime)
 
 void ASpawnerObservador::actualizar(Apublicador* publicador)
 {
-	if (Enemyclass != nullptr)
+	if (EnemyClass != nullptr)
 	{
 		UWorld* world = GetWorld();
 		if (world)
 		{
+			// Definir la ubicación y rotación del enemigo
 			FVector SpawnLocation = GetActorLocation() + FVector(FMath::RandRange(-500, 500), FMath::RandRange(-500, 500), 50);
 			FRotator SpawnRotation = FRotator::ZeroRotator;
-			world->SpawnActor<Aenemigo>(EnemyClass, SpawnLocation, SpawnRotation);
-		
+
+			// Intentar crear el enemigo
+			Aenemigo* NewEnemy = world->SpawnActor<Aenemigo>(EnemyClass, SpawnLocation, SpawnRotation);
+
+			// Si se crea exitosamente, mostrar mensaje en pantalla y notificar a otros observadores
 			if (NewEnemy)
 			{ 
-				if (GEngine)
-				{
-					GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Enemy spawned at location: %s"), *SpawnLocation.ToString()));
-				}
-
+				// Mensaje en pantalla 
+				 if (GEngine)
+				 { 
+					 GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Enemy spawned at location: %s"), *SpawnLocation.ToString())); 
+				 } 
+				 // Mensaje en el log 
+				 //UE_LOG(LogTemp, Log, TEXT("Enemy spawned at location: %s"), *SpawnLocation.ToString());
 			}
-		
 		}
 	}
-
 }
 

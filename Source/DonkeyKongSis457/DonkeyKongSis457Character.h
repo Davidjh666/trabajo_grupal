@@ -4,15 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-<<<<<<< HEAD
 #include "publicador.h"
 #include "DonkeyKongSis457Character.generated.h"
 
-
-=======
-#include "DonkeyKongSis457Character.generated.h"
-
->>>>>>> ebacfbec790451ba2ef6df39d5da743cf3c56981
 UCLASS(config=Game)
 class ADonkeyKongSis457Character : public ACharacter
 {
@@ -49,12 +43,11 @@ public:
 	FORCEINLINE class UCameraComponent* GetSideViewCameraComponent() const { return SideViewCameraComponent; }
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
-<<<<<<< HEAD
+
 
 	//publicador para notificar a los observadores de la posicion del personaje
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Eventos")
 	Apublicador* publicador;
 
-=======
->>>>>>> ebacfbec790451ba2ef6df39d5da743cf3c56981
+
 };

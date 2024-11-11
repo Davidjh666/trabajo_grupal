@@ -41,13 +41,12 @@ ADonkeyKongSis457Character::ADonkeyKongSis457Character()
 	GetCharacterMovement()->MaxWalkSpeed = 1900.f;
 	GetCharacterMovement()->MaxFlySpeed = 600.f;
 
-<<<<<<< HEAD
+
 
 	//inicializar el publicador
 	publicador = nullptr;
 
-=======
->>>>>>> ebacfbec790451ba2ef6df39d5da743cf3c56981
+
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
 }
@@ -70,7 +69,7 @@ void ADonkeyKongSis457Character::MoveRight(float Value)
 {
 	// add movement in that direction
 	AddMovementInput(FVector(0.f,-1.f,0.f), Value);
-<<<<<<< HEAD
+
 	
 	//notificar al publicador
 	if (publicador)
@@ -79,8 +78,7 @@ void ADonkeyKongSis457Character::MoveRight(float Value)
 
 	}
 
-=======
->>>>>>> ebacfbec790451ba2ef6df39d5da743cf3c56981
+
 }
 
 void ADonkeyKongSis457Character::TouchStarted(const ETouchIndex::Type FingerIndex, const FVector Location)

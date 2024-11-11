@@ -5,30 +5,29 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "observador.h"
-#include "SpawnerObservador.generated.h"
 #include "enemigo.h"
-#include "publicador.h"
+//#include "publicador.generated.h"  // Este debe ser el último #include
+#include "SpawnerObservador.generated.h"
 
 UCLASS()
-class DONKEYKONGSIS457_API ASpawnerObservador : public AActor
+class DONKEYKONGSIS457_API ASpawnerObservador : public AActor, public Iobservador
 {
-	GENERATED_BODY()
-	
-public:	
-	// Sets default values for this actor's properties
-	ASpawnerObservador();
+    GENERATED_BODY()
+
+public:
+    // Sets default values for this actor's properties
+    ASpawnerObservador();
 
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+    // Called when the game starts or when spawned
+    virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+public:
+    // Called every frame
+    virtual void Tick(float DeltaTime) override;
 
     virtual void actualizar(Apublicador* publicador);
 
-	UPROPERTY(EditAnywhere, Category= "Spawning")
-	TSubclassOf<Aenemigo> Enemyclass;
-
+    UPROPERTY(EditAnywhere, Category = "Spawning")
+    TSubclassOf<Aenemigo> EnemyClass;
 };
